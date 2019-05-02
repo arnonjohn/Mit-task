@@ -1,0 +1,19 @@
+<div class="body">
+
+<div class="container box">
+  <h4 style="text-align:center"> Upload your Excel file here</h4>
+  <br>
+  <div class="row">
+    <div class="col-md-12 offset-md-3">
+      <div>
+        <form (ngSubmit)="Upload()">
+          <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file"
+            accept=".xlsx">
+          <button type="submit" class="btn btn-info">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</div>

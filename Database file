@@ -1,0 +1,4 @@
+create database arun;
+
+create table arun.t_txn_user(firstname varchar(30), lastname varchar(30), phone bigint(15),
+email varchar(20), state varchar(20)); 

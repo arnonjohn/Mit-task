@@ -57,8 +57,9 @@ app.get('/userdata', function (req, res, next) {
     })
 });
 
+var mail = false;
 app.post('/upload', function (req, res, next) {
-    var uemail = "rajkumar@mitresource.com"; 
+    var uemail = "teamunicsol@gmail.com";
     var fil = JSON.stringify(req.body.file);
     var file = req.body.file;
     // console.log(file)
@@ -73,7 +74,11 @@ app.post('/upload', function (req, res, next) {
         connection.query(query, [firstname, lastname, phone, email, state], function (error, rows) {
             if (error) {
                 console.log("problem while inserting mysql" + error);
-                // senderror(uemail, fil);
+                if (error && !mail) {
+                    senderror(uemail, fil);
+                    this.mail = true;
+                }
+
             } else {
                 console.log("Inserted sucessfully" + rows)
 
@@ -87,24 +92,25 @@ app.post('/upload', function (req, res, next) {
 var nodemailer = nemail.createTransport({
     service: 'gmail',
     auth: {
-        user: 'please set you email',
-        pass: 'enter you password here'
+        user: 'teamunicsol@gmail.com',
+        pass: 'Koneqto@2018'
     },
     tls: { rejectUnauthorized: false }
 });
 
-function senderror(email, fil) {
+function senderror(uemail, fil) {
+    console.log(uemail)
     var body =
         '<p>There is some error while uploading the excel file .please check the record ' + fil + '</p>';
     let mailOptions = {
-        from: nodemailer.email,
-        to: email.trim(),
+        from: nodemailer.nemail,
+        to: uemail.trim(),
         subject: "Errormail",
         html: body,
     };
     nodemailer.sendMail(mailOptions, function (err, info) {
         if (err) {
-            console.error("loginauth sendmail..." + err.body);
+            console.error("api sendmail..." + err.body);
         }
         else {
             console.log('Message sent: %s', info.messageId);

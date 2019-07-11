@@ -59,7 +59,7 @@ app.get('/userdata', function (req, res, next) {
 
 var mail = false;
 app.post('/upload', function (req, res, next) {
-    var uemail = "rajkumar@mitresource.com";
+    var uemail = "to email address";
     var fil = JSON.stringify(req.body.file);
     var file = req.body.file;
     // console.log(file)
@@ -92,8 +92,8 @@ app.post('/upload', function (req, res, next) {
 var nodemailer = nemail.createTransport({
     service: 'gmail',
     auth: {
-        user: 'ararnon718@gmail.com',
-        pass: 'koneqto@2018'
+        user: 'your email address',
+        pass: 'password'
     },
     tls: { rejectUnauthorized: false }
 });
